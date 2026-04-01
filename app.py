@@ -34,7 +34,7 @@ if "conversation_messages" not in st.session_state:
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.header("⚙️ Your Team")
+    st.header("Your Team")
     st.markdown(
         "Enter your FPL team ID to unlock personalised advice from the **Tactician** — "
         "starting 11, captain picks, bench order, and chip strategy based on your actual squad."
@@ -88,7 +88,7 @@ with st.sidebar:
 
 # ── Main UI ───────────────────────────────────────────────────────────────────
 
-st.title("FPL Assistant ⚽")
+st.title("FPL Assistant")
 
 if not st.session_state.history:
     with st.chat_message("assistant"):
@@ -113,18 +113,18 @@ for role, msg in st.session_state.history:
 # ── Chat input ────────────────────────────────────────────────────────────────
 
 STAGE_LABELS = {
-    "orchestrator":        "🧭 Routing your question...",
-    "analyst":             "📊 Analyst is fetching player stats...",
-    "analyst_tools":       "📊 Analyst is fetching player stats...",
-    "accountant":          "💰 Accountant is finding transfer targets...",
-    "accountant_tools":    "💰 Accountant is finding transfer targets...",
-    "tactician":           "🧠 Tactician is analysing your squad...",
-    "tactician_tools":     "🧠 Tactician is loading your team data...",
-    "scout":               "🔍 Scout is checking the latest news...",
-    "scout_tools":         "🔍 Scout is checking the latest news...",
-    "parse_scout_verdict": "🔍 Scout is reviewing findings...",
-    "extract_results":     "📋 Compiling results...",
-    "summariser":          "✍️ Writing your answer...",
+    "orchestrator":        "Routing your question...",
+    "analyst":             "Analyst is fetching player stats...",
+    "analyst_tools":       "Analyst is fetching player stats...",
+    "accountant":          "Accountant is finding transfer targets...",
+    "accountant_tools":    "Accountant is finding transfer targets...",
+    "tactician":           "Tactician is analysing your squad...",
+    "tactician_tools":     "Tactician is loading your team data...",
+    "scout":               "Scout is checking the latest news...",
+    "scout_tools":         "Scout is checking the latest news...",
+    "parse_scout_verdict": "Scout is reviewing findings...",
+    "extract_results":     "Compiling results...",
+    "summariser":          "Writing your answer...",
 }
 
 

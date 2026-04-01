@@ -1325,10 +1325,10 @@ Header line:
 
 Section 1 — 🟢 STARTING XI (sorted GKP→DEF→MID→FWD)
 
-  Pos  | Player              | Club              | Price  | xP    | Form  | ICT   | Avg FDR | Score
-  ─────────────────────────────────────────────────────────────────────────────────────────────────
-  GKP  | Flekken             | Brentford         | £4.5m  | 5.1   | 7.2   | 88.4  | 2.3     | 36.1
-  DEF  | Alexander-Arnold    | Liverpool         | £7.2m  | 8.3   | 9.1   | 95.0  | 2.0     | 48.2
+  Pos  | Player              | Club              | Price  | xP    | Form  | ICT   | Avg FDR 
+  ──────────────────────────────────────────────────────────────────────────────────────────
+  GKP  | Flekken             | Brentford         | £4.5m  | 5.1   | 7.2   | 88.4  | 2.3     
+  DEF  | Alexander-Arnold    | Liverpool         | £7.2m  | 8.3   | 9.1   | 95.0  | 2.0     
 
   • Append (C) after the captain's name, (V) after vice-captain's name.
   • If ep_next_is_estimate is true, mark xP as "xP (est.)".
@@ -1338,8 +1338,8 @@ Section 2 — 🟡 BENCH (sorted by score, best first)
   Same columns as above but no (C)/(V).
 
 Captain block (after both tables):
-  🏆 Captain:       [name] — xP [X.X] | Form [X.X] | Score [X.X]
-  🥈 Vice-captain:  [name] — xP [X.X] | Form [X.X] | Score [X.X]
+  🏆 Captain:       [name] — xP [X.X] | Form [X.X] 
+  🥈 Vice-captain:  [name] — xP [X.X] | Form [X.X]
 
 Substitutions block (always show, even if empty):
   🔄 Auto-subs applied:
@@ -1368,9 +1368,9 @@ Header:
 
 Section 1 — 🟢 STARTING XI (the optimal XI from get_optimal_xi, sorted GKP→DEF→MID→FWD)
 
-  Pos  | Player              | Club              | Price  | xP    | Form  | Score
-  ─────────────────────────────────────────────────────────────────────────────
-  GKP  | Flekken             | Brentford         | £4.5m  | 5.1   | 7.2   | 36.1
+  Pos  | Player              | Club              | Price  | xP    | Form  
+  ────────────────────────────────────────────────────────────────────────
+  GKP  | Flekken             | Brentford         | £4.5m  | 5.1   | 7.2   
 
   • Append (C) after the captain's name, (V) after vice-captain's name.
 
