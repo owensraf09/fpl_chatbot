@@ -21,20 +21,22 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # ── Streamlit configuration ───────────────────────────────────────────────────
-# Disable the browser-open prompt and telemetry; configure the server for
-# container environments (no CORS restrictions, accessible on all interfaces).
+# Cloud Run injects PORT at runtime (typically 8080). Streamlit must bind to
+# that port, not a hardcoded one. We default to 8080 locally so the image
+# works without Cloud Run too.
 ENV STREAMLIT_SERVER_HEADLESS=true \
     STREAMLIT_SERVER_ADDRESS=0.0.0.0 \
-    STREAMLIT_SERVER_PORT=8501 \
     STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
 # ── Expose port ───────────────────────────────────────────────────────────────
-EXPOSE 8501
+# Cloud Run ignores EXPOSE but it documents intent for local use.
+EXPOSE 8080
 
 # ── Health check ──────────────────────────────────────────────────────────────
-# Gives Docker / orchestrators a way to verify the app is running.
-HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')"
+# Cloud Run has its own health checking; this is for local docker run only.
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD python -c "import urllib.request, os; urllib.request.urlopen(f\"http://localhost:{os.environ.get('PORT', '8080')}/_stcore/health\")"
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────
-CMD ["streamlit", "run", "app.py"]
+# Read $PORT at container start time — Cloud Run sets this before the CMD runs.
+CMD streamlit run app.py --server.port=${PORT:-8080}
