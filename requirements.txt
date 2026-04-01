@@ -1,0 +1,16 @@
+# FPL Assistant — Python dependencies
+
+# LLM + LangChain
+langchain-core
+langchain-openai
+langgraph
+
+# Web framework
+streamlit
+
+# HTTP client (FPL API + Tavily)
+requests
+urllib3
+
+# Environment variables
+python-dotenv
