@@ -1,5 +1,4 @@
 # fpl_chatbot
-# ⚽ FPL Assistant
 
 A multi-agent AI assistant for Fantasy Premier League, built with LangGraph and Streamlit. Four specialist agents collaborate to answer any FPL question — from player stats and transfer targets to personalised squad advice — backed by live FPL API data and real-time web news.
 
