@@ -1,6 +1,6 @@
 # fpl_chatbot
 
-A multi-agent AI assistant for Fantasy Premier League, built with LangGraph and Streamlit. Four specialist agents collaborate to answer any FPL question — from player stats and transfer targets to personalised squad advice — backed by live FPL API data and real-time web news.
+A multi-agent AI assistant for Fantasy Premier League, built with LangGraph and Streamlit. Four specialist agents collaborate to answer any FPL question, from player stats and transfer targets to personalised squad advice, backed by live FPL API data and real-time web news.
 
 ---
 
@@ -27,29 +27,22 @@ Orchestrator (guardrail + router)
 
 ## Agents
 
-### 🧭 Orchestrator
+### Orchestrator
 Routes every query to the correct specialist after an LLM-powered FPL relevance guardrail. Off-topic questions are blocked before any agent is invoked.
 
-### 📊 Analyst
+### Analyst
 Answers questions about specific players (stats, form, expected points, fixture difficulty) and general FPL knowledge (rules, scoring, chips, price changes, blank/double gameweeks). Pulls live data from the FPL bootstrap API.
 
-### 💰 Accountant
+### Accountant
 Finds transfer targets by position and budget. Returns a **budget band** (direct swaps) and optionally a **premium band** (upgrade options requiring extra spend or a points hit), ranked by a composite score: `(ep_next × 3) + (form × 2) + (total_points / 20) − (avg_fdr × 1.5)`.
 
-### 🧠 Tactician
+### Tactician
 Gives personalised advice based on the user's actual FPL squad (requires a team ID). Classifies intent into one of four modes before calling tools:
 
-| Intent | What it does |
-|---|---|
-| `DISPLAY` | Renders the full 15-player squad |
-| `OPTIMAL` | Scores all 15 players and picks the best valid XI |
-| `SUBS` | Bench vs starters comparison |
-| `TRANSFERS` | Ranks transfer plan
 
 ###  Scout
 Searches the web via **Tavily** for live injury news, press conference updates, and rotation risk. Runs after the primary agent and can loop back with a corrected recommendation if a flagged player is injured or doubtful. Capped at 2 loops.
 
-**Tool:** `search_fpl_news
 ## Getting Started
 
 ### Prerequisites
@@ -102,10 +95,4 @@ Then open [http://localhost:8501](http://localhost:8501) in your browser.
 
 Your FPL team ID can be found in the URL of your Points page on the FPL website: `.../entry/YOUR_ID/event/...`
 
----
 
-## Data Sources
-
-- **[FPL Bootstrap API](https://fantasy.premierleague.com/api/bootstrap-static/)** — player stats, prices, fixtures, ownership (cached, refreshed every 5 minutes)
-- **[FPL Fixtures API](https://fantasy.premierleague.com/api/fixtures/)** — upcoming fixtures and FDR scores
-- **[Tavily Search](https://tavily.com)** — live web news filtered to trusted FPL/PL sources (BBC Sport, Sky Sports, The Athletic, Fantasy Football Scout, and more)
